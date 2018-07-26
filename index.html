@@ -1,0 +1,3730 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css">
+        <link rel="stylesheet" href="css/Control.OSMGeocoder.css">
+        <link rel="stylesheet" href="css/leaflet-measure.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet.wms.js"></script>
+        <script src="js/Control.OSMGeocoder.js"></script>
+        <script src="js/leaflet-measure.js"></script>
+        <script src="data/VT_Data__Town_Boundaries_1.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[43.51094251887659,-73.46700961278864],[44.1164457647185,-72.18491505738362]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
+        var measureControl = new L.Control.Measure({
+            primaryLengthUnit: 'feet',
+            secondaryLengthUnit: 'miles',
+            primaryAreaUnit: 'sqfeet',
+            secondaryAreaUnit: 'sqmiles'
+        });
+        measureControl.addTo(map);
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        var overlay_IMG_VCGI_CLR_SP_CACHE_0 = L.WMS.layer("https://maps.vcgi.vermont.gov/arcgis/services/EGC_services/IMG_VCGI_CLR_SP_CACHE/ImageServer/WMSServer", "0", {
+            format: 'image/png',
+            uppercase: true,
+            transparent: true,
+            continuousWorld : true,
+            tiled: true,
+            info_format: 'text/html',
+            opacity: 1,
+            identify: false,
+        });
+        map.addLayer(overlay_IMG_VCGI_CLR_SP_CACHE_0);
+        function pop_VT_Data__Town_Boundaries_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? Autolinker.link(String(feature.properties['OBJECTID'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FIPS6'] !== null ? Autolinker.link(String(feature.properties['FIPS6'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">TOWNNAME</th>\
+                        <td>' + (feature.properties['TOWNNAME'] !== null ? Autolinker.link(String(feature.properties['TOWNNAME'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TOWNNAMEMC'] !== null ? Autolinker.link(String(feature.properties['TOWNNAMEMC'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CNTY'] !== null ? Autolinker.link(String(feature.properties['CNTY'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TOWNGEOID'] !== null ? Autolinker.link(String(feature.properties['TOWNGEOID'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ShapeSTAre'] !== null ? Autolinker.link(String(feature.properties['ShapeSTAre'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ShapeSTLen'] !== null ? Autolinker.link(String(feature.properties['ShapeSTLen'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_VT_Data__Town_Boundaries_1_0(feature) {
+            switch(String(feature.properties['TOWNNAME'])) {
+                case 'ADDISON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(201,109,99,0.501)',
+            }
+                    break;
+                case 'ALBANY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(42,214,157,0.501)',
+            }
+                    break;
+                case 'ALBURGH':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(64,83,228,0.501)',
+            }
+                    break;
+                case 'ANDOVER':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(144,225,14,0.501)',
+            }
+                    break;
+                case 'ARLINGTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,150,77,0.501)',
+            }
+                    break;
+                case 'ATHENS':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(80,207,125,0.501)',
+            }
+                    break;
+                case 'AVERILL':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(237,117,197,0.501)',
+            }
+                    break;
+                case 'AVERYS GORE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(159,217,70,0.501)',
+            }
+                    break;
+                case 'BAKERSFIELD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(158,75,240,0.501)',
+            }
+                    break;
+                case 'BALTIMORE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(89,212,13,0.501)',
+            }
+                    break;
+                case 'BARNARD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,139,134,0.501)',
+            }
+                    break;
+                case 'BARNET':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(137,227,25,0.501)',
+            }
+                    break;
+                case 'BARRE CITY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(234,229,81,0.501)',
+            }
+                    break;
+                case 'BARRE TOWN':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(129,227,101,0.501)',
+            }
+                    break;
+                case 'BARTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(76,64,232,0.501)',
+            }
+                    break;
+                case 'BELVIDERE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(115,206,107,0.501)',
+            }
+                    break;
+                case 'BENNINGTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(137,239,35,0.501)',
+            }
+                    break;
+                case 'BENSON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(124,207,137,0.501)',
+            }
+                    break;
+                case 'BERKSHIRE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(67,38,236,0.501)',
+            }
+                    break;
+                case 'BERLIN':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(97,202,78,0.501)',
+            }
+                    break;
+                case 'BETHEL':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(235,111,178,0.501)',
+            }
+                    break;
+                case 'BLOOMFIELD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(107,186,217,0.501)',
+            }
+                    break;
+                case 'BOLTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(183,36,202,0.501)',
+            }
+                    break;
+                case 'BRADFORD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(28,204,137,0.501)',
+            }
+                    break;
+                case 'BRAINTREE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(76,230,79,0.501)',
+            }
+                    break;
+                case 'BRANDON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(219,163,42,0.501)',
+            }
+                    break;
+                case 'BRATTLEBORO':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(20,203,203,0.501)',
+            }
+                    break;
+                case 'BRIDGEWATER':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(116,148,207,0.501)',
+            }
+                    break;
+                case 'BRIDPORT':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(114,182,233,0.501)',
+            }
+                    break;
+                case 'BRIGHTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(108,207,177,0.501)',
+            }
+                    break;
+                case 'BRISTOL':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(21,25,223,0.501)',
+            }
+                    break;
+                case 'BROOKFIELD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(191,225,67,0.501)',
+            }
+                    break;
+                case 'BROOKLINE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(201,218,42,0.501)',
+            }
+                    break;
+                case 'BROWNINGTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(79,227,96,0.501)',
+            }
+                    break;
+                case 'BRUNSWICK':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(216,35,68,0.501)',
+            }
+                    break;
+                case 'BUELS GORE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(234,192,125,0.501)',
+            }
+                    break;
+                case 'BURKE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(119,97,228,0.501)',
+            }
+                    break;
+                case 'BURLINGTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(71,173,203,0.501)',
+            }
+                    break;
+                case 'CABOT':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(231,99,200,0.501)',
+            }
+                    break;
+                case 'CALAIS':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(39,236,101,0.501)',
+            }
+                    break;
+                case 'CAMBRIDGE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(115,238,220,0.501)',
+            }
+                    break;
+                case 'CANAAN':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(102,225,174,0.501)',
+            }
+                    break;
+                case 'CASTLETON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(209,27,27,0.501)',
+            }
+                    break;
+                case 'CAVENDISH':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(190,223,88,0.501)',
+            }
+                    break;
+                case 'CHARLESTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(207,86,21,0.501)',
+            }
+                    break;
+                case 'CHARLOTTE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(230,91,57,0.501)',
+            }
+                    break;
+                case 'CHELSEA':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(233,111,34,0.501)',
+            }
+                    break;
+                case 'CHESTER':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(218,128,120,0.501)',
+            }
+                    break;
+                case 'CHITTENDEN':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(38,205,230,0.501)',
+            }
+                    break;
+                case 'CLARENDON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(110,88,209,0.501)',
+            }
+                    break;
+                case 'COLCHESTER':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(186,214,128,0.501)',
+            }
+                    break;
+                case 'CONCORD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(154,220,128,0.501)',
+            }
+                    break;
+                case 'CORINTH':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(100,169,214,0.501)',
+            }
+                    break;
+                case 'CORNWALL':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(200,70,80,0.501)',
+            }
+                    break;
+                case 'COVENTRY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(219,142,128,0.501)',
+            }
+                    break;
+                case 'CRAFTSBURY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(82,193,229,0.501)',
+            }
+                    break;
+                case 'DANBY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(102,108,225,0.501)',
+            }
+                    break;
+                case 'DANVILLE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(133,173,232,0.501)',
+            }
+                    break;
+                case 'DERBY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(47,27,230,0.501)',
+            }
+                    break;
+                case 'DORSET':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(237,116,23,0.501)',
+            }
+                    break;
+                case 'DOVER':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(99,17,230,0.501)',
+            }
+                    break;
+                case 'DUMMERSTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(203,91,236,0.501)',
+            }
+                    break;
+                case 'DUXBURY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(93,232,58,0.501)',
+            }
+                    break;
+                case 'EAST HAVEN':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,117,130,0.501)',
+            }
+                    break;
+                case 'EAST MONTPELIER':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,227,107,0.501)',
+            }
+                    break;
+                case 'EDEN':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(104,222,156,0.501)',
+            }
+                    break;
+                case 'ELMORE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(213,150,41,0.501)',
+            }
+                    break;
+                case 'ENOSBURG':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(102,143,232,0.501)',
+            }
+                    break;
+                case 'ESSEX':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(126,235,217,0.501)',
+            }
+                    break;
+                case 'FAIR HAVEN':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(62,121,203,0.501)',
+            }
+                    break;
+                case 'FAIRFAX':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(34,226,229,0.501)',
+            }
+                    break;
+                case 'FAIRFIELD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(111,128,202,0.501)',
+            }
+                    break;
+                case 'FAIRLEE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(24,177,215,0.501)',
+            }
+                    break;
+                case 'FAYSTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(75,226,184,0.501)',
+            }
+                    break;
+                case 'FERDINAND':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(218,43,99,0.501)',
+            }
+                    break;
+                case 'FERRISBURGH':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(26,198,210,0.501)',
+            }
+                    break;
+                case 'FLETCHER':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(200,67,176,0.501)',
+            }
+                    break;
+                case 'FRANKLIN':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(232,123,187,0.501)',
+            }
+                    break;
+                case 'GEORGIA':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(40,17,213,0.501)',
+            }
+                    break;
+                case 'GLASTENBURY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(230,91,207,0.501)',
+            }
+                    break;
+                case 'GLOVER':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(51,232,57,0.501)',
+            }
+                    break;
+                case 'GOSHEN':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(92,136,237,0.501)',
+            }
+                    break;
+                case 'GRAFTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(91,221,84,0.501)',
+            }
+                    break;
+                case 'GRANBY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(175,224,50,0.501)',
+            }
+                    break;
+                case 'GRAND ISLE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(222,203,96,0.501)',
+            }
+                    break;
+                case 'GRANVILLE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(189,121,218,0.501)',
+            }
+                    break;
+                case 'GREENSBORO':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,213,16,0.501)',
+            }
+                    break;
+                case 'GROTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(211,68,77,0.501)',
+            }
+                    break;
+                case 'GUILDHALL':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(224,85,152,0.501)',
+            }
+                    break;
+                case 'GUILFORD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(34,222,125,0.501)',
+            }
+                    break;
+                case 'HALIFAX':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,122,36,0.501)',
+            }
+                    break;
+                case 'HANCOCK':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(218,54,87,0.501)',
+            }
+                    break;
+                case 'HARDWICK':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(239,105,186,0.501)',
+            }
+                    break;
+                case 'HARTFORD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(224,134,74,0.501)',
+            }
+                    break;
+                case 'HARTLAND':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(201,47,158,0.501)',
+            }
+                    break;
+                case 'HIGHGATE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(90,211,183,0.501)',
+            }
+                    break;
+                case 'HINESBURG':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(210,116,151,0.501)',
+            }
+                    break;
+                case 'HOLLAND':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(18,208,107,0.501)',
+            }
+                    break;
+                case 'HUBBARDTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(156,205,104,0.501)',
+            }
+                    break;
+                case 'HUNTINGTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(226,94,114,0.501)',
+            }
+                    break;
+                case 'HYDE PARK':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(17,217,197,0.501)',
+            }
+                    break;
+                case 'IRA':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(195,88,207,0.501)',
+            }
+                    break;
+                case 'IRASBURG':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(93,173,230,0.501)',
+            }
+                    break;
+                case 'ISLE LA MOTTE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(212,104,198,0.501)',
+            }
+                    break;
+                case 'JAMAICA':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(228,187,62,0.501)',
+            }
+                    break;
+                case 'JAY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(224,117,163,0.501)',
+            }
+                    break;
+                case 'JERICHO':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(23,202,225,0.501)',
+            }
+                    break;
+                case 'JOHNSON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(21,172,206,0.501)',
+            }
+                    break;
+                case 'KILLINGTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(233,116,165,0.501)',
+            }
+                    break;
+                case 'KIRBY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(201,109,207,0.501)',
+            }
+                    break;
+                case 'LANDGROVE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(217,109,94,0.501)',
+            }
+                    break;
+                case 'LEICESTER':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(116,68,203,0.501)',
+            }
+                    break;
+                case 'LEMINGTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,105,100,0.501)',
+            }
+                    break;
+                case 'LEWIS':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(230,82,37,0.501)',
+            }
+                    break;
+                case 'LINCOLN':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(112,214,61,0.501)',
+            }
+                    break;
+                case 'LONDONDERRY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(214,66,148,0.501)',
+            }
+                    break;
+                case 'LOWELL':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(212,229,112,0.501)',
+            }
+                    break;
+                case 'LUDLOW':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(84,204,47,0.501)',
+            }
+                    break;
+                case 'LUNENBURG':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(71,207,89,0.501)',
+            }
+                    break;
+                case 'LYNDON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(203,35,186,0.501)',
+            }
+                    break;
+                case 'MAIDSTONE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(121,234,148,0.501)',
+            }
+                    break;
+                case 'MANCHESTER':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(203,41,63,0.501)',
+            }
+                    break;
+                case 'MARLBORO':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(73,205,196,0.501)',
+            }
+                    break;
+                case 'MARSHFIELD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(134,225,116,0.501)',
+            }
+                    break;
+                case 'MENDON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(31,212,76,0.501)',
+            }
+                    break;
+                case 'MIDDLEBURY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(224,104,150,0.501)',
+            }
+                    break;
+                case 'MIDDLESEX':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(139,232,215,0.501)',
+            }
+                    break;
+                case 'MIDDLETOWN SPRINGS':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(92,224,74,0.501)',
+            }
+                    break;
+                case 'MILTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(180,77,220,0.501)',
+            }
+                    break;
+                case 'MONKTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(239,119,213,0.501)',
+            }
+                    break;
+                case 'MONTGOMERY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(52,203,108,0.501)',
+            }
+                    break;
+                case 'MONTPELIER':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(185,237,42,0.501)',
+            }
+                    break;
+                case 'MORETOWN':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(12,201,50,0.501)',
+            }
+                    break;
+                case 'MORGAN':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(212,126,39,0.501)',
+            }
+                    break;
+                case 'MORRISTOWN':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(225,186,106,0.501)',
+            }
+                    break;
+                case 'MOUNT HOLLY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(21,119,230,0.501)',
+            }
+                    break;
+                case 'MOUNT TABOR':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(181,205,58,0.501)',
+            }
+                    break;
+                case 'NEW HAVEN':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,89,91,0.501)',
+            }
+                    break;
+                case 'NEWARK':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(27,215,149,0.501)',
+            }
+                    break;
+                case 'NEWBURY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(124,207,68,0.501)',
+            }
+                    break;
+                case 'NEWFANE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(153,121,231,0.501)',
+            }
+                    break;
+                case 'NEWPORT CITY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(58,141,217,0.501)',
+            }
+                    break;
+                case 'NEWPORT TOWN':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(53,227,181,0.501)',
+            }
+                    break;
+                case 'NORTH HERO':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(183,219,37,0.501)',
+            }
+                    break;
+                case 'NORTHFIELD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(22,211,205,0.501)',
+            }
+                    break;
+                case 'NORTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(215,82,15,0.501)',
+            }
+                    break;
+                case 'NORWICH':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(122,51,204,0.501)',
+            }
+                    break;
+                case 'ORANGE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(108,207,163,0.501)',
+            }
+                    break;
+                case 'ORWELL':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(12,142,217,0.501)',
+            }
+                    break;
+                case 'PANTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(233,62,171,0.501)',
+            }
+                    break;
+                case 'PAWLET':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(119,79,228,0.501)',
+            }
+                    break;
+                case 'PEACHAM':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(168,228,39,0.501)',
+            }
+                    break;
+                case 'PERU':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(153,78,213,0.501)',
+            }
+                    break;
+                case 'PITTSFIELD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(143,229,63,0.501)',
+            }
+                    break;
+                case 'PITTSFORD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(56,235,68,0.501)',
+            }
+                    break;
+                case 'PLAINFIELD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(83,96,240,0.501)',
+            }
+                    break;
+                case 'PLYMOUTH':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(29,149,205,0.501)',
+            }
+                    break;
+                case 'POMFRET':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(46,139,221,0.501)',
+            }
+                    break;
+                case 'POULTNEY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(225,87,32,0.501)',
+            }
+                    break;
+                case 'POWNAL':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(134,129,231,0.501)',
+            }
+                    break;
+                case 'PROCTOR':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(168,238,114,0.501)',
+            }
+                    break;
+                case 'PUTNEY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(116,221,30,0.501)',
+            }
+                    break;
+                case 'RANDOLPH':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(92,192,212,0.501)',
+            }
+                    break;
+                case 'READING':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,70,138,0.501)',
+            }
+                    break;
+                case 'READSBORO':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(208,69,102,0.501)',
+            }
+                    break;
+                case 'RICHFORD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(148,99,215,0.501)',
+            }
+                    break;
+                case 'RICHMOND':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(219,237,15,0.501)',
+            }
+                    break;
+                case 'RIPTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,177,101,0.501)',
+            }
+                    break;
+                case 'ROCHESTER':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(152,46,227,0.501)',
+            }
+                    break;
+                case 'ROCKINGHAM':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(52,76,231,0.501)',
+            }
+                    break;
+                case 'ROXBURY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(178,29,227,0.501)',
+            }
+                    break;
+                case 'ROYALTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(30,238,214,0.501)',
+            }
+                    break;
+                case 'RUPERT':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(236,237,139,0.501)',
+            }
+                    break;
+                case 'RUTLAND':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(42,149,206,0.501)',
+            }
+                    break;
+                case 'RUTLAND CITY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(219,23,160,0.501)',
+            }
+                    break;
+                case 'RYEGATE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,219,88,0.501)',
+            }
+                    break;
+                case 'SALISBURY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(105,111,207,0.501)',
+            }
+                    break;
+                case 'SANDGATE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(239,27,186,0.501)',
+            }
+                    break;
+                case 'SEARSBURG':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(64,210,125,0.501)',
+            }
+                    break;
+                case 'SHAFTSBURY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(230,141,63,0.501)',
+            }
+                    break;
+                case 'SHARON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(30,126,228,0.501)',
+            }
+                    break;
+                case 'SHEFFIELD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(56,56,209,0.501)',
+            }
+                    break;
+                case 'SHELBURNE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(211,88,197,0.501)',
+            }
+                    break;
+                case 'SHELDON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(223,222,122,0.501)',
+            }
+                    break;
+                case 'SHOREHAM':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(210,122,98,0.501)',
+            }
+                    break;
+                case 'SHREWSBURY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(186,92,236,0.501)',
+            }
+                    break;
+                case 'SOMERSET':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(222,192,81,0.501)',
+            }
+                    break;
+                case 'SOUTH BURLINGTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(215,94,131,0.501)',
+            }
+                    break;
+                case 'SOUTH HERO':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(81,201,17,0.501)',
+            }
+                    break;
+                case 'SPRINGFIELD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(210,96,216,0.501)',
+            }
+                    break;
+                case 'ST. ALBANS CITY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(192,20,218,0.501)',
+            }
+                    break;
+                case 'ST. ALBANS TOWN':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(208,67,208,0.501)',
+            }
+                    break;
+                case 'ST. GEORGE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(151,68,206,0.501)',
+            }
+                    break;
+                case 'ST. JOHNSBURY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(201,120,197,0.501)',
+            }
+                    break;
+                case 'STAMFORD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(119,150,228,0.501)',
+            }
+                    break;
+                case 'STANNARD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(125,202,209,0.501)',
+            }
+                    break;
+                case 'STARKSBORO':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(88,209,203,0.501)',
+            }
+                    break;
+                case 'STOCKBRIDGE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(231,70,126,0.501)',
+            }
+                    break;
+                case 'STOWE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(77,199,205,0.501)',
+            }
+                    break;
+                case 'STRAFFORD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(98,217,134,0.501)',
+            }
+                    break;
+                case 'STRATTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(208,194,31,0.501)',
+            }
+                    break;
+                case 'SUDBURY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(96,233,169,0.501)',
+            }
+                    break;
+                case 'SUNDERLAND':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(217,134,65,0.501)',
+            }
+                    break;
+                case 'SUTTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,209,126,0.501)',
+            }
+                    break;
+                case 'SWANTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(100,151,218,0.501)',
+            }
+                    break;
+                case 'THETFORD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,179,122,0.501)',
+            }
+                    break;
+                case 'TINMOUTH':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(210,215,42,0.501)',
+            }
+                    break;
+                case 'TOPSHAM':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(110,47,235,0.501)',
+            }
+                    break;
+                case 'TOWNSHEND':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(197,217,64,0.501)',
+            }
+                    break;
+                case 'TROY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(45,226,78,0.501)',
+            }
+                    break;
+                case 'TUNBRIDGE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(201,185,83,0.501)',
+            }
+                    break;
+                case 'UNDERHILL':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(163,77,213,0.501)',
+            }
+                    break;
+                case 'VERGENNES':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(74,23,240,0.501)',
+            }
+                    break;
+                case 'VERNON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(219,198,114,0.501)',
+            }
+                    break;
+                case 'VERSHIRE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(113,150,215,0.501)',
+            }
+                    break;
+                case 'VICTORY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(39,225,132,0.501)',
+            }
+                    break;
+                case 'WAITSFIELD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,47,233,0.501)',
+            }
+                    break;
+                case 'WALDEN':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(218,159,86,0.501)',
+            }
+                    break;
+                case 'WALLINGFORD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,94,131,0.501)',
+            }
+                    break;
+                case 'WALTHAM':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(183,228,104,0.501)',
+            }
+                    break;
+                case 'WARDSBORO':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(101,97,225,0.501)',
+            }
+                    break;
+                case 'WARNERS GRANT':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(206,25,73,0.501)',
+            }
+                    break;
+                case 'WARREN':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(46,206,89,0.501)',
+            }
+                    break;
+                case 'WARREN GORE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(229,71,174,0.501)',
+            }
+                    break;
+                case 'WASHINGTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(28,232,188,0.501)',
+            }
+                    break;
+                case 'WATERBURY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(61,212,61,0.501)',
+            }
+                    break;
+                case 'WATERFORD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(126,62,223,0.501)',
+            }
+                    break;
+                case 'WATERVILLE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(169,213,110,0.501)',
+            }
+                    break;
+                case 'WEATHERSFIELD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(183,131,228,0.501)',
+            }
+                    break;
+                case 'WELLS':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(107,221,53,0.501)',
+            }
+                    break;
+                case 'WEST FAIRLEE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(82,192,239,0.501)',
+            }
+                    break;
+                case 'WEST HAVEN':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(111,78,231,0.501)',
+            }
+                    break;
+                case 'WEST RUTLAND':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(189,81,219,0.501)',
+            }
+                    break;
+                case 'WEST WINDSOR':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(218,36,206,0.501)',
+            }
+                    break;
+                case 'WESTFIELD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(229,30,232,0.501)',
+            }
+                    break;
+                case 'WESTFORD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(59,229,53,0.501)',
+            }
+                    break;
+                case 'WESTMINSTER':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(49,228,29,0.501)',
+            }
+                    break;
+                case 'WESTMORE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(34,239,51,0.501)',
+            }
+                    break;
+                case 'WESTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(72,107,222,0.501)',
+            }
+                    break;
+                case 'WEYBRIDGE':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(236,47,53,0.501)',
+            }
+                    break;
+                case 'WHEELOCK':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(230,52,135,0.501)',
+            }
+                    break;
+                case 'WHITING':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(218,112,217,0.501)',
+            }
+                    break;
+                case 'WHITINGHAM':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(122,76,227,0.501)',
+            }
+                    break;
+                case 'WILLIAMSTOWN':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(43,200,137,0.501)',
+            }
+                    break;
+                case 'WILLISTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(179,123,207,0.501)',
+            }
+                    break;
+                case 'WILMINGTON':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(205,112,94,0.501)',
+            }
+                    break;
+                case 'WINDHAM':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(214,110,237,0.501)',
+            }
+                    break;
+                case 'WINDSOR':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(79,109,200,0.501)',
+            }
+                    break;
+                case 'WINHALL':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(229,235,109,0.501)',
+            }
+                    break;
+                case 'WINOOSKI':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(129,40,237,0.501)',
+            }
+                    break;
+                case 'WOLCOTT':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(25,215,98,0.501)',
+            }
+                    break;
+                case 'WOODBURY':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(219,117,69,0.501)',
+            }
+                    break;
+                case 'WOODFORD':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(208,167,113,0.501)',
+            }
+                    break;
+                case 'WOODSTOCK':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(35,74,227,0.501)',
+            }
+                    break;
+                case 'WORCESTER':
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(236,99,50,0.501)',
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_VT_Data__Town_Boundaries_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.501)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(91,115,231,0.501)',
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_VT_Data__Town_Boundaries_1');
+        map.getPane('pane_VT_Data__Town_Boundaries_1').style.zIndex = 401;
+        map.getPane('pane_VT_Data__Town_Boundaries_1').style['mix-blend-mode'] = 'normal';
+        var layer_VT_Data__Town_Boundaries_1 = new L.geoJson(json_VT_Data__Town_Boundaries_1, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_VT_Data__Town_Boundaries_1',
+            onEachFeature: pop_VT_Data__Town_Boundaries_1,
+            style: style_VT_Data__Town_Boundaries_1_0,
+        });
+        bounds_group.addLayer(layer_VT_Data__Town_Boundaries_1);
+        map.addLayer(layer_VT_Data__Town_Boundaries_1);
+        var osmGeocoder = new L.Control.OSMGeocoder({
+            collapsed: false,
+            position: 'topright',
+            text: 'Search',
+        });
+        osmGeocoder.addTo(map);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'VT_Data__Town_Boundaries<br /><table><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_ADDISON0.png" /></td><td>ADDISON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_ALBANY1.png" /></td><td>ALBANY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_ALBURGH2.png" /></td><td>ALBURGH</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_ANDOVER3.png" /></td><td>ANDOVER</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_ARLINGTON4.png" /></td><td>ARLINGTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_ATHENS5.png" /></td><td>ATHENS</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_AVERILL6.png" /></td><td>AVERILL</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_AVERYSGORE7.png" /></td><td>AVERYS GORE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BAKERSFIELD8.png" /></td><td>BAKERSFIELD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BALTIMORE9.png" /></td><td>BALTIMORE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BARNARD10.png" /></td><td>BARNARD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BARNET11.png" /></td><td>BARNET</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BARRECITY12.png" /></td><td>BARRE CITY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BARRETOWN13.png" /></td><td>BARRE TOWN</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BARTON14.png" /></td><td>BARTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BELVIDERE15.png" /></td><td>BELVIDERE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BENNINGTON16.png" /></td><td>BENNINGTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BENSON17.png" /></td><td>BENSON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BERKSHIRE18.png" /></td><td>BERKSHIRE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BERLIN19.png" /></td><td>BERLIN</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BETHEL20.png" /></td><td>BETHEL</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BLOOMFIELD21.png" /></td><td>BLOOMFIELD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BOLTON22.png" /></td><td>BOLTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BRADFORD23.png" /></td><td>BRADFORD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BRAINTREE24.png" /></td><td>BRAINTREE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BRANDON25.png" /></td><td>BRANDON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BRATTLEBORO26.png" /></td><td>BRATTLEBORO</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BRIDGEWATER27.png" /></td><td>BRIDGEWATER</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BRIDPORT28.png" /></td><td>BRIDPORT</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BRIGHTON29.png" /></td><td>BRIGHTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BRISTOL30.png" /></td><td>BRISTOL</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BROOKFIELD31.png" /></td><td>BROOKFIELD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BROOKLINE32.png" /></td><td>BROOKLINE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BROWNINGTON33.png" /></td><td>BROWNINGTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BRUNSWICK34.png" /></td><td>BRUNSWICK</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BUELSGORE35.png" /></td><td>BUELS GORE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BURKE36.png" /></td><td>BURKE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_BURLINGTON37.png" /></td><td>BURLINGTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_CABOT38.png" /></td><td>CABOT</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_CALAIS39.png" /></td><td>CALAIS</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_CAMBRIDGE40.png" /></td><td>CAMBRIDGE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_CANAAN41.png" /></td><td>CANAAN</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_CASTLETON42.png" /></td><td>CASTLETON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_CAVENDISH43.png" /></td><td>CAVENDISH</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_CHARLESTON44.png" /></td><td>CHARLESTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_CHARLOTTE45.png" /></td><td>CHARLOTTE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_CHELSEA46.png" /></td><td>CHELSEA</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_CHESTER47.png" /></td><td>CHESTER</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_CHITTENDEN48.png" /></td><td>CHITTENDEN</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_CLARENDON49.png" /></td><td>CLARENDON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_COLCHESTER50.png" /></td><td>COLCHESTER</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_CONCORD51.png" /></td><td>CONCORD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_CORINTH52.png" /></td><td>CORINTH</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_CORNWALL53.png" /></td><td>CORNWALL</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_COVENTRY54.png" /></td><td>COVENTRY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_CRAFTSBURY55.png" /></td><td>CRAFTSBURY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_DANBY56.png" /></td><td>DANBY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_DANVILLE57.png" /></td><td>DANVILLE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_DERBY58.png" /></td><td>DERBY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_DORSET59.png" /></td><td>DORSET</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_DOVER60.png" /></td><td>DOVER</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_DUMMERSTON61.png" /></td><td>DUMMERSTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_DUXBURY62.png" /></td><td>DUXBURY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_EASTHAVEN63.png" /></td><td>EAST HAVEN</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_EASTMONTPELIER64.png" /></td><td>EAST MONTPELIER</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_EDEN65.png" /></td><td>EDEN</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_ELMORE66.png" /></td><td>ELMORE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_ENOSBURG67.png" /></td><td>ENOSBURG</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_ESSEX68.png" /></td><td>ESSEX</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_FAIRHAVEN69.png" /></td><td>FAIR HAVEN</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_FAIRFAX70.png" /></td><td>FAIRFAX</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_FAIRFIELD71.png" /></td><td>FAIRFIELD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_FAIRLEE72.png" /></td><td>FAIRLEE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_FAYSTON73.png" /></td><td>FAYSTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_FERDINAND74.png" /></td><td>FERDINAND</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_FERRISBURGH75.png" /></td><td>FERRISBURGH</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_FLETCHER76.png" /></td><td>FLETCHER</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_FRANKLIN77.png" /></td><td>FRANKLIN</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_GEORGIA78.png" /></td><td>GEORGIA</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_GLASTENBURY79.png" /></td><td>GLASTENBURY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_GLOVER80.png" /></td><td>GLOVER</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_GOSHEN81.png" /></td><td>GOSHEN</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_GRAFTON82.png" /></td><td>GRAFTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_GRANBY83.png" /></td><td>GRANBY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_GRANDISLE84.png" /></td><td>GRAND ISLE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_GRANVILLE85.png" /></td><td>GRANVILLE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_GREENSBORO86.png" /></td><td>GREENSBORO</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_GROTON87.png" /></td><td>GROTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_GUILDHALL88.png" /></td><td>GUILDHALL</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_GUILFORD89.png" /></td><td>GUILFORD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_HALIFAX90.png" /></td><td>HALIFAX</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_HANCOCK91.png" /></td><td>HANCOCK</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_HARDWICK92.png" /></td><td>HARDWICK</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_HARTFORD93.png" /></td><td>HARTFORD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_HARTLAND94.png" /></td><td>HARTLAND</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_HIGHGATE95.png" /></td><td>HIGHGATE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_HINESBURG96.png" /></td><td>HINESBURG</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_HOLLAND97.png" /></td><td>HOLLAND</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_HUBBARDTON98.png" /></td><td>HUBBARDTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_HUNTINGTON99.png" /></td><td>HUNTINGTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_HYDEPARK100.png" /></td><td>HYDE PARK</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_IRA101.png" /></td><td>IRA</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_IRASBURG102.png" /></td><td>IRASBURG</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_ISLELAMOTTE103.png" /></td><td>ISLE LA MOTTE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_JAMAICA104.png" /></td><td>JAMAICA</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_JAY105.png" /></td><td>JAY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_JERICHO106.png" /></td><td>JERICHO</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_JOHNSON107.png" /></td><td>JOHNSON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_KILLINGTON108.png" /></td><td>KILLINGTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_KIRBY109.png" /></td><td>KIRBY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_LANDGROVE110.png" /></td><td>LANDGROVE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_LEICESTER111.png" /></td><td>LEICESTER</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_LEMINGTON112.png" /></td><td>LEMINGTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_LEWIS113.png" /></td><td>LEWIS</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_LINCOLN114.png" /></td><td>LINCOLN</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_LONDONDERRY115.png" /></td><td>LONDONDERRY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_LOWELL116.png" /></td><td>LOWELL</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_LUDLOW117.png" /></td><td>LUDLOW</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_LUNENBURG118.png" /></td><td>LUNENBURG</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_LYNDON119.png" /></td><td>LYNDON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_MAIDSTONE120.png" /></td><td>MAIDSTONE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_MANCHESTER121.png" /></td><td>MANCHESTER</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_MARLBORO122.png" /></td><td>MARLBORO</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_MARSHFIELD123.png" /></td><td>MARSHFIELD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_MENDON124.png" /></td><td>MENDON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_MIDDLEBURY125.png" /></td><td>MIDDLEBURY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_MIDDLESEX126.png" /></td><td>MIDDLESEX</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_MIDDLETOWNSPRINGS127.png" /></td><td>MIDDLETOWN SPRINGS</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_MILTON128.png" /></td><td>MILTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_MONKTON129.png" /></td><td>MONKTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_MONTGOMERY130.png" /></td><td>MONTGOMERY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_MONTPELIER131.png" /></td><td>MONTPELIER</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_MORETOWN132.png" /></td><td>MORETOWN</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_MORGAN133.png" /></td><td>MORGAN</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_MORRISTOWN134.png" /></td><td>MORRISTOWN</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_MOUNTHOLLY135.png" /></td><td>MOUNT HOLLY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_MOUNTTABOR136.png" /></td><td>MOUNT TABOR</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_NEWHAVEN137.png" /></td><td>NEW HAVEN</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_NEWARK138.png" /></td><td>NEWARK</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_NEWBURY139.png" /></td><td>NEWBURY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_NEWFANE140.png" /></td><td>NEWFANE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_NEWPORTCITY141.png" /></td><td>NEWPORT CITY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_NEWPORTTOWN142.png" /></td><td>NEWPORT TOWN</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_NORTHHERO143.png" /></td><td>NORTH HERO</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_NORTHFIELD144.png" /></td><td>NORTHFIELD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_NORTON145.png" /></td><td>NORTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_NORWICH146.png" /></td><td>NORWICH</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_ORANGE147.png" /></td><td>ORANGE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_ORWELL148.png" /></td><td>ORWELL</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_PANTON149.png" /></td><td>PANTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_PAWLET150.png" /></td><td>PAWLET</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_PEACHAM151.png" /></td><td>PEACHAM</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_PERU152.png" /></td><td>PERU</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_PITTSFIELD153.png" /></td><td>PITTSFIELD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_PITTSFORD154.png" /></td><td>PITTSFORD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_PLAINFIELD155.png" /></td><td>PLAINFIELD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_PLYMOUTH156.png" /></td><td>PLYMOUTH</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_POMFRET157.png" /></td><td>POMFRET</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_POULTNEY158.png" /></td><td>POULTNEY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_POWNAL159.png" /></td><td>POWNAL</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_PROCTOR160.png" /></td><td>PROCTOR</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_PUTNEY161.png" /></td><td>PUTNEY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_RANDOLPH162.png" /></td><td>RANDOLPH</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_READING163.png" /></td><td>READING</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_READSBORO164.png" /></td><td>READSBORO</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_RICHFORD165.png" /></td><td>RICHFORD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_RICHMOND166.png" /></td><td>RICHMOND</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_RIPTON167.png" /></td><td>RIPTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_ROCHESTER168.png" /></td><td>ROCHESTER</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_ROCKINGHAM169.png" /></td><td>ROCKINGHAM</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_ROXBURY170.png" /></td><td>ROXBURY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_ROYALTON171.png" /></td><td>ROYALTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_RUPERT172.png" /></td><td>RUPERT</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_RUTLAND173.png" /></td><td>RUTLAND</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_RUTLANDCITY174.png" /></td><td>RUTLAND CITY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_RYEGATE175.png" /></td><td>RYEGATE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_SALISBURY176.png" /></td><td>SALISBURY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_SANDGATE177.png" /></td><td>SANDGATE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_SEARSBURG178.png" /></td><td>SEARSBURG</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_SHAFTSBURY179.png" /></td><td>SHAFTSBURY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_SHARON180.png" /></td><td>SHARON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_SHEFFIELD181.png" /></td><td>SHEFFIELD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_SHELBURNE182.png" /></td><td>SHELBURNE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_SHELDON183.png" /></td><td>SHELDON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_SHOREHAM184.png" /></td><td>SHOREHAM</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_SHREWSBURY185.png" /></td><td>SHREWSBURY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_SOMERSET186.png" /></td><td>SOMERSET</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_SOUTHBURLINGTON187.png" /></td><td>SOUTH BURLINGTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_SOUTHHERO188.png" /></td><td>SOUTH HERO</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_SPRINGFIELD189.png" /></td><td>SPRINGFIELD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_STALBANSCITY190.png" /></td><td>ST. ALBANS CITY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_STALBANSTOWN191.png" /></td><td>ST. ALBANS TOWN</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_STGEORGE192.png" /></td><td>ST. GEORGE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_STJOHNSBURY193.png" /></td><td>ST. JOHNSBURY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_STAMFORD194.png" /></td><td>STAMFORD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_STANNARD195.png" /></td><td>STANNARD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_STARKSBORO196.png" /></td><td>STARKSBORO</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_STOCKBRIDGE197.png" /></td><td>STOCKBRIDGE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_STOWE198.png" /></td><td>STOWE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_STRAFFORD199.png" /></td><td>STRAFFORD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_STRATTON200.png" /></td><td>STRATTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_SUDBURY201.png" /></td><td>SUDBURY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_SUNDERLAND202.png" /></td><td>SUNDERLAND</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_SUTTON203.png" /></td><td>SUTTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_SWANTON204.png" /></td><td>SWANTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_THETFORD205.png" /></td><td>THETFORD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_TINMOUTH206.png" /></td><td>TINMOUTH</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_TOPSHAM207.png" /></td><td>TOPSHAM</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_TOWNSHEND208.png" /></td><td>TOWNSHEND</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_TROY209.png" /></td><td>TROY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_TUNBRIDGE210.png" /></td><td>TUNBRIDGE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_UNDERHILL211.png" /></td><td>UNDERHILL</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_VERGENNES212.png" /></td><td>VERGENNES</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_VERNON213.png" /></td><td>VERNON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_VERSHIRE214.png" /></td><td>VERSHIRE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_VICTORY215.png" /></td><td>VICTORY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WAITSFIELD216.png" /></td><td>WAITSFIELD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WALDEN217.png" /></td><td>WALDEN</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WALLINGFORD218.png" /></td><td>WALLINGFORD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WALTHAM219.png" /></td><td>WALTHAM</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WARDSBORO220.png" /></td><td>WARDSBORO</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WARNERSGRANT221.png" /></td><td>WARNERS GRANT</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WARREN222.png" /></td><td>WARREN</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WARRENGORE223.png" /></td><td>WARREN GORE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WASHINGTON224.png" /></td><td>WASHINGTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WATERBURY225.png" /></td><td>WATERBURY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WATERFORD226.png" /></td><td>WATERFORD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WATERVILLE227.png" /></td><td>WATERVILLE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WEATHERSFIELD228.png" /></td><td>WEATHERSFIELD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WELLS229.png" /></td><td>WELLS</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WESTFAIRLEE230.png" /></td><td>WEST FAIRLEE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WESTHAVEN231.png" /></td><td>WEST HAVEN</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WESTRUTLAND232.png" /></td><td>WEST RUTLAND</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WESTWINDSOR233.png" /></td><td>WEST WINDSOR</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WESTFIELD234.png" /></td><td>WESTFIELD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WESTFORD235.png" /></td><td>WESTFORD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WESTMINSTER236.png" /></td><td>WESTMINSTER</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WESTMORE237.png" /></td><td>WESTMORE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WESTON238.png" /></td><td>WESTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WEYBRIDGE239.png" /></td><td>WEYBRIDGE</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WHEELOCK240.png" /></td><td>WHEELOCK</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WHITING241.png" /></td><td>WHITING</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WHITINGHAM242.png" /></td><td>WHITINGHAM</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WILLIAMSTOWN243.png" /></td><td>WILLIAMSTOWN</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WILLISTON244.png" /></td><td>WILLISTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WILMINGTON245.png" /></td><td>WILMINGTON</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WINDHAM246.png" /></td><td>WINDHAM</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WINDSOR247.png" /></td><td>WINDSOR</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WINHALL248.png" /></td><td>WINHALL</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WINOOSKI249.png" /></td><td>WINOOSKI</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WOLCOTT250.png" /></td><td>WOLCOTT</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WOODBURY251.png" /></td><td>WOODBURY</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WOODFORD252.png" /></td><td>WOODFORD</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WOODSTOCK253.png" /></td><td>WOODSTOCK</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_WORCESTER254.png" /></td><td>WORCESTER</td></tr><tr><td style="text-align: center;"><img src="legend/VT_Data__Town_Boundaries_1_255.png" /></td><td></td></tr></table>': layer_VT_Data__Town_Boundaries_1,"IMG_VCGI_CLR_SP_CACHE": overlay_IMG_VCGI_CLR_SP_CACHE_0,}).addTo(map);
+        setBounds();
+        var i = 0;
+        layer_VT_Data__Town_Boundaries_1.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['TOWNNAME'] !== null?String('<div style="color: #000000; font-size: 7pt; font-family: \'MS Reference Sans Serif\', sans-serif;">' + layer.feature.properties['TOWNNAME']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_VT_Data__Town_Boundaries_1'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_VTDataTownBoundaries_1]);
+        map.on("zoomend", function(){
+            resetLabels([layer_VTDataTownBoundaries_1]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_VTDataTownBoundaries_1]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_VTDataTownBoundaries_1]);
+        });
+        </script>
+    </body>
+</html>
